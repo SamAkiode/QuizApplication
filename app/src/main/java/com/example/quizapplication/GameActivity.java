@@ -21,14 +21,14 @@ import java.util.List;
 public class GameActivity extends AppCompatActivity {
 
     private TextView QuizQuestion, QuizPoints, QuizQuestionsNo, QuizTimer;
-    private Button optRbt1, optRbt2, optRbt3;
+    private Button optBt1, optBt2, optBt3;
     private Button NextBtn;
 
     int allQuestionsAnswered;
     int questionCounter = 0;
     int Point = 0;
 
-    ColorStateList optRbtPicked;
+    ColorStateList optBtPicked;
     boolean answered;
     CountDownTimer cdtimer;
 
@@ -50,12 +50,12 @@ public class GameActivity extends AppCompatActivity {
         QuizTimer = findViewById(R.id.gameTimer);
 
         answerBox = findViewById(R.id.answerBox);
-        optRbt1 = findViewById(R.id.answerA);
-        optRbt2 = findViewById(R.id.answerB);
-        optRbt3 = findViewById(R.id.answerC);
+        optBt1 = findViewById(R.id.answerA);
+        optBt2 = findViewById(R.id.answerB);
+        optBt3 = findViewById(R.id.answerC);
         NextBtn = findViewById(R.id.nextBtn);
 
-        optRbtPicked = optRbt1.getTextColors();
+        optBtPicked = optBt1.getTextColors();
 
         inputQuestions();
         allQuestionsAnswered = questionsList.size();
@@ -65,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answered == false){
-                    if(optRbt1.isChecked() || optRbt2.isChecked() || optRbt3.isChecked()){
+                    if(optBt1.isChecked() || optBt2.isChecked() || optBt3.isChecked()){
                         verifyAnswer();
                         cdtimer.cancel();
                     }else {
@@ -84,19 +84,19 @@ public class GameActivity extends AppCompatActivity {
                     Point++;
                     QuizPoints.setText("Point: "+ Point);
                 }
-                optRbt1.setTextColor(Color.RED);
-                optRbt2.setTextColor(Color.RED);
-                optRbt3.setTextColor(Color.RED);
+                optBt1.setTextColor(Color.RED);
+                optBt2.setTextColor(Color.RED);
+                optBt3.setTextColor(Color.RED);
 
                 switch (onGoingQuestion.getRightAnswerCounter()){
                     case 1:
-                        optRbt1.setTextColor(Color.GREEN);
+                        optBt1.setTextColor(Color.GREEN);
                         break;
                     case 2:
-                        optRbt2.setTextColor(Color.GREEN);
+                        optBt2.setTextColor(Color.GREEN);
                         break;
                     case 3:
-                        optRbt3.setTextColor(Color.GREEN);
+                        optBt3.setTextColor(Color.GREEN);
                         break;
                 }
                 if (questionCounter < allQuestionsAnswered){
@@ -115,17 +115,17 @@ public class GameActivity extends AppCompatActivity {
     private void showNextQuestions() {
 
         answerBox.clearCheck();
-        optRbt1.setTextColor(optRbtPicked);
-        optRbt2.setTextColor(optRbtPicked);
-        optRbt3.setTextColor(optRbtPicked);
+        optBt1.setTextColor(optBtPicked);
+        optBt2.setTextColor(optBtPicked);
+        optBt3.setTextColor(optBtPicked);
 
         if(questionCounter < allQuestionsAnswered){
             timer();
             onGoingQuestion = questionsList.get(questionCounter);
             QuizQuestion.setText(onGoingQuestion.getQuestion());
-            optRbt1.setText(onGoingQuestion.getAnswerA());
-            optRbt2.setText(onGoingQuestion.getAnswerB());
-            optRbt3.setText(onGoingQuestion.getAnswerC());
+            optBt1.setText(onGoingQuestion.getAnswerA());
+            optBt2.setText(onGoingQuestion.getAnswerB());
+            optBt3.setText(onGoingQuestion.getAnswerC());
 
             questionCounter++;
             NextBtn.setText("SUBMIT");
