@@ -79,6 +79,7 @@
             android:layout_marginTop="13dp"
             android:text="@string/optionA"
             android:textColor="#23022E"
+            android:backgroundTint="@color/white"
             android:textSize="20sp" />
 
         <Button
@@ -89,6 +90,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/optionB"
             android:textColor="#23022E"
+            android:backgroundTint="@color/white"
             android:textSize="20sp" />
 
         <Button
@@ -98,6 +100,7 @@
             android:text="@string/optionC"
             android:layout_below="@+id/answerB"
             android:textColor="#23022E"
+            android:backgroundTint="@color/white"
             android:textSize="20sp" />
 
         <Button
