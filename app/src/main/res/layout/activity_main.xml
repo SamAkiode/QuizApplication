@@ -15,7 +15,7 @@
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="#ff7477"
+        android:background="@drawable/gradientbc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="16dp">
@@ -28,7 +28,7 @@
             android:layout_marginTop="100dp"
             android:text="@string/quiz"
             android:textAlignment="center"
-            android:textColor="#4a6c6f"
+            android:textColor="#874F69"
             android:textSize="70sp"
             android:textStyle="bold" />
 
