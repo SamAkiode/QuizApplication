@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_);
+        setContentView(R.layout.activity_game);
 
 
         questionsList = new ArrayList<>();
@@ -49,13 +49,14 @@ public class GameActivity extends AppCompatActivity {
         QuizQuestionsNo = findViewById(R.id.questionNo);
         QuizTimer = findViewById(R.id.gameTimer);
 
-        answerBox = findViewById(R.id.answerBox);
         optBt1 = findViewById(R.id.answerA);
         optBt2 = findViewById(R.id.answerB);
         optBt3 = findViewById(R.id.answerC);
         NextBtn = findViewById(R.id.nextBtn);
 
         optBtPicked = optBt1.getTextColors();
+
+
 
         inputQuestions();
         allQuestionsAnswered = questionsList.size();
@@ -65,10 +66,13 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answered == false){
-                    if(optBt1.isChecked() || optBt2.isChecked() || optBt3.isChecked()){
-                        verifyAnswer();
-                        cdtimer.cancel();
-                    }else {
+                    if(optBt1.callOnClick()){
+                    verifyAnswer();
+                    cdtimer.cancel();
+                    
+                    }
+
+                    else {
                         Toast.makeText(GameActivity.this, "Choose an answer", Toast.LENGTH_SHORT).show();
                     }
                 }else {
@@ -78,9 +82,8 @@ public class GameActivity extends AppCompatActivity {
 
             private void verifyAnswer() {
                 answered = true;
-                Button rbtPicked = findViewById(View.OnClickListener);
-                int answerNo = answerBox.indexOfChild(rbtPicked) + 1;
-                if(answerNo == onGoingQuestion.getRightAnswerCounter()){
+                Button btPicked = findViewById(NextBtn.getId());
+                if(btPicked.equals(onGoingQuestion.getRightAnswerCounter())){
                     Point++;
                     QuizPoints.setText("Point: "+ Point);
                 }
@@ -114,7 +117,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void showNextQuestions() {
 
-        answerBox.clearCheck();
+
         optBt1.setTextColor(optBtPicked);
         optBt2.setTextColor(optBtPicked);
         optBt3.setTextColor(optBtPicked);
